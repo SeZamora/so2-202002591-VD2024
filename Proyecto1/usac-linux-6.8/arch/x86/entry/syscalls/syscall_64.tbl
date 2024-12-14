@@ -429,4 +429,5 @@
 # This is the end of the legacy x32 range.  Numbers 548 and above are
 # not special and are not to be used for x32-specific syscalls.
 
+551 common zamora_capture_memory_snapshot sys_zamora_capture_memory_snapshot
 552 common zamora_track_syscall_usage sys_zamora_track_syscall_usage
