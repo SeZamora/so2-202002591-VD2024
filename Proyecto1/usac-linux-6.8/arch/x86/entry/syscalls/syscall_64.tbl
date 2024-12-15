@@ -431,3 +431,4 @@
 
 551 common zamora_capture_memory_snapshot sys_zamora_capture_memory_snapshot
 552 common zamora_track_syscall_usage sys_zamora_track_syscall_usage
+553 common zamora_get_io_throttle sys_zamora_get_io_throttle

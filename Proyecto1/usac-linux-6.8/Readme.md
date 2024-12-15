@@ -1,9 +1,4 @@
-# Proyecto 1 Sistemas Operativo 2
-### Expansión del Kernel de Linux con Nuevas Funcionalidades
-
-
-
-## 1. Código fuente del kernel modificado
+## Código fuente del kernel modificado
 
 ### 1. Mensaje Personalizado Durante la Inicialización
 
@@ -62,7 +57,7 @@ include/linux/uts.h
    ```
 
 
-## 2. Implementación de nuevas llamadas al sistema
+## Implementación de nuevas llamadas al sistema
 
 ### **1. `zamora_track_syscall_usage`**
 
