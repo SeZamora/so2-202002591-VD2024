@@ -1,9 +1,20 @@
 # Proyecto 1 Sistemas Operativo 2
 ### Expansión del Kernel de Linux con Nuevas Funcionalidades
 
+## 1. Introducción y Objetivos del Proyecto
+
+### **Introducción**
+
+El proyecto consiste en la personalización y extensión del núcleo del sistema operativo Linux mediante la implementación de tres nuevas syscalls y un módulo adicional del kernel. Estas modificaciones permiten recopilar y gestionar estadísticas clave del sistema, proporcionando una mayor visibilidad sobre su funcionamiento interno y su interacción con los procesos.
 
 
-## 1. Código fuente del kernel modificado
+### **Objetivos**
+1. Implementar tres nuevas syscalls para registrar estadísticas de syscalls, capturar snapshots de memoria y obtener estadísticas de I/O por proceso.
+2. Desarrollar un módulo del kernel que exponga estadísticas avanzadas de CPU, memoria y almacenamiento en `/proc/system_stats`.
+3. Documentar y probar las modificaciones realizadas para garantizar su funcionalidad y estabilidad.
+
+
+## 2. Código fuente del kernel modificado
 
 ### 1. Mensaje Personalizado Durante la Inicialización
 
@@ -62,7 +73,7 @@ include/linux/uts.h
    ```
 
 
-## 2. Implementación de nuevas llamadas al sistema
+## 3. Implementación de nuevas llamadas al sistema
 
 ### **1. `zamora_track_syscall_usage`**
 
@@ -171,4 +182,60 @@ SYSCALL_DEFINE2(zamora_get_io_throttle, pid_t, pid, struct io_stats __user *, st
 - Las estadísticas se recopilan desde la estructura `task_struct` del proceso, específicamente de `task->ioac` (task_io_accounting).
 - `task_lock` y `task_unlock` aseguran que las estadísticas del proceso no se modifiquen mientras se recopilan.
 - Los datos recopilados se copian al espacio de usuario mediante `copy_to_user`.
+
+## 4. Módulos del kernel para la recopilación de estadísticas del sistema
+
+### **Descripción**
+El módulo `modulo4` proporciona estadísticas del sistema de manera accesible a través de una entrada en `/proc/modulo4`. Este módulo recopila y muestra las siguientes estadísticas:
+
+- **Uso de CPU:** Porcentaje de uso actual de la CPU basado en los datos de `/proc/stat`.
+- **Estadísticas de memoria:** Incluye la memoria total y la memoria disponible en el sistema.
+- **Estadísticas de almacenamiento:** Proporciona el espacio total y libre de una partición específica (por defecto `/`).
+
+
+### **Funcionalidad**
+
+#### **1. Uso de CPU**
+El módulo calcula el porcentaje de uso de la CPU a partir de los datos en `/proc/stat`.
+
+#### **2. Estadísticas de memoria**
+Se obtienen las estadísticas de memoria utilizando la función `si_meminfo`.
+
+#### **3. Estadísticas de almacenamiento**
+Se recopilan estadísticas sobre el almacenamiento usando `vfs_statfs`.
+
+### **Compilación e Instalación**
+
+
+1. **Compila el módulo**:
+   ```bash
+   make
+   ```
+
+2. **Carga el módulo**:
+   ```bash
+   sudo insmod modulo4.ko
+   ```
+
+3. **Verifica la salida**:
+   ```bash
+   cat /proc/modulo4
+   ```
+
+4. **Descarga el módulo**:
+   ```bash
+   sudo rmmod modulo4
+
+## 5. Cronograma
+
+El proyecto fue realizado en el siguiente orden:
+- **Martes 10:** Cambiar el nombre del kernel y primera compilacion
+- **Miercoles 11:** Agregar un mensaje de bienvenda y comenzar a invertigar como funcionan las syscalls
+- **Jueves 12:** Crear el repositorio den github, avanzar en la creacion de la syscall2 entendiendo mejor en que partes y que archivos de debian crear
+- **Viernes 13:** Terminar la syscall2 entendido como es el metodo de creacions de syscall y crear la syscall1
+- **Sabado 14:** Crear la syscall3, Modulo que devuelve las estadisticas del sistema y documentacion 
+
+## 6. Reflexión personal
+
+Este proyecto me ayudo a entender mejor como funciona un kernel y como cosas que usamos tan habitualmente esta creadas para nuestra disposición. Compilar y modificar el kernel nos a entender un como funcionan de las cosas y entender mejor toda la distribucion y creacion del kernel.
 
