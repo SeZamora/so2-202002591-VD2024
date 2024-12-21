@@ -1,0 +1,1 @@
+savedcmd_/home/zamora/Documentos/Tareas/Sopes2/so2-202002591-VD2024/Proyecto1/Modulo/modulo4.mod := printf '%s\n'   modulo4.o | awk '!x[$$0]++ { print("/home/zamora/Documentos/Tareas/Sopes2/so2-202002591-VD2024/Proyecto1/Modulo/"$$0) }' > /home/zamora/Documentos/Tareas/Sopes2/so2-202002591-VD2024/Proyecto1/Modulo/modulo4.mod
