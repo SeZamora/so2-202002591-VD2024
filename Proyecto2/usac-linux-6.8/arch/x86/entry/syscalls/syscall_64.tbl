@@ -432,3 +432,6 @@
 551 common zamora_capture_memory_snapshot sys_zamora_capture_memory_snapshot
 552 common zamora_track_syscall_usage sys_zamora_track_syscall_usage
 553 common zamora_get_io_throttle sys_zamora_get_io_throttle
+554 common zamora_tamalloc sys_zamora_tamalloc
+555 common zamora_mem_stats_process sys_zamora_mem_stats_process
+556 common zamora_mem_stats_global sys_zamora_mem_stats_global

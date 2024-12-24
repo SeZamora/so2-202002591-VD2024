@@ -1,1 +1,1 @@
-savedcmd_kernel/usac/built-in.a := rm -f kernel/usac/built-in.a;  printf "kernel/usac/%s " syscall2.o syscall1.o syscall3.o | xargs ar cDPrST kernel/usac/built-in.a
+savedcmd_kernel/usac/built-in.a := rm -f kernel/usac/built-in.a;  printf "kernel/usac/%s " syscall2.o syscall1.o syscall3.o sys_tamalloc.o sys_stats_proc.o sys_stats_global.o | xargs ar cDPrST kernel/usac/built-in.a

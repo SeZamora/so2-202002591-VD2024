@@ -1,8 +1,14 @@
 !<thin>
-//                                              36        `
+//                                              90        `
 syscall2.o/
 syscall1.o/
 syscall3.o/
+sys_tamalloc.o/
+sys_stats_proc.o/
+sys_stats_global.o/
 /0              0           0     0     644     224192    `
 /12             0           0     0     644     259552    `
 /24             0           0     0     644     221960    `
+/36             0           0     0     644     227344    `
+/52             0           0     0     644     226432    `
+/70             0           0     0     644     225776    `
